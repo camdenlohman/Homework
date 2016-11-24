@@ -27,7 +27,8 @@ lines.push("York Place")
 lines.delete("Edinburgh Park")
 
 # 8. Delete 'Edinburgh Park' from the array by index
-lines.delete_at(1)
+array_index = lines.index("Edinburgh Park")
+lines.delete_at(array_index)
 
 # 9. Reverse the positions of the stops in the array
 lines.reverse!
@@ -46,10 +47,10 @@ puts my_hash[:two]
 puts my_hash["two"]
 
 # 4. How would you add `{3 => "Three"}` to the hash?
-my_hash[3] = "Three:"
+my_hash[3] = "Three:" # or just "Three"
 
 # 5. How would you add `{:four => 4}` to the hash?
-my_hash[:four] = 4
+my_hash[:four] = 4 # my_hash.store( :four,4)
 
 ### C. Given the following data structure:
 
@@ -99,6 +100,7 @@ puts users["Avril"][:pets]["colin"]
 
 # 5. Return the smallest of Erik's favorite numbers
 puts users["Erik"][:favourite_numbers].min
+#another one : puts users["Erik"][:favourite_numbers].sort().first()
 
 # 6. Add the number `7` to Erik's favorite numbers
  users["Erik"][:favourite_numbers].push(7)
