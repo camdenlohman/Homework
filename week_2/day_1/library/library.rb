@@ -24,7 +24,7 @@ class Library
 
   def add_book(array,change)
     array[:books] += change
-     return array
+    return array
   end
 
   def taking_book(array,search,student)
@@ -33,9 +33,9 @@ class Library
         book[:student_name] = student
         book[:date] = "12/23/16"
         return book
+      end
+    end
   end
-end
-end
 
 
 end
