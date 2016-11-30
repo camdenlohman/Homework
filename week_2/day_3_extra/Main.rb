@@ -1,5 +1,3 @@
-require("minitest/autorun")
-require("minitest/rg")
 require_relative("player")
 require_relative("die")
 require_relative("tile")
@@ -121,10 +119,12 @@ def Main
         
         in_loop = true
         while in_loop == true do
+          
           #for current_player in player_number do
             #p_name = current_player[:input].to_s
             puts "Hello player do you want to roll or exit?"
             action = gets.chomp
+            system 'clear'
             #$stdin <= figure this out if you want
             if action == 'roll'
               puts 'you rolled'
@@ -166,6 +166,7 @@ def Main
 
           if action == 'exit'
             in_loop = false
+            system 'clear'
             break
            # end
          end
