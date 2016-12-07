@@ -66,6 +66,6 @@ def set_location(change)
 end
 
 def get_location
-return @location
-  end
+  return @location
+end
 end

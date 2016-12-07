@@ -3,42 +3,53 @@
 
 SELECT * FROM movies;
 
+
 2 Return ONLY the name column from the 'people' table
 
 SELECT name FROM people;
+
 
 3 Return ONLY your name from the 'people' table.
 
 SELECT name FROM people WHERE name = 'Camden Lohman';
 
+
 4 The cinema is showing 'Batman Begins', but Batman is DC, not Marvel! Delete the entry from the 'movies' table.
 
 DELETE FROM movies WHERE title = 'Batman Begins';
+
 
 5 Create a new entry in the 'people' table with the name of one of the instructors.
 
 INSERT INTO people (name) VALUES ('Simon Douglas');
 
+
 6 Craig Morton, has decided to hijack our movie evening, Remove him from the table of people
 
 DELETE FROM people WHERE name = 'Craig Morton';
 
-7 Somehow the list of people includes two people named 'Andrew'. Change one entry to 'Andy' and leave the other entry as 'Andrew'
 
+7 Somehow the list of people includes two people named 'Andrew'. Change one entry to 'Andy' and leave the other entry as 'Andrew'
+-- Should have added the last name aswell
 UPDATE people SET name = 'andy' WHERE id = 7;
+
 
 8 The cinema has just heard that they will be holding an exclusive midnight showing of 'Guardians of the Galaxy 2'!! Create a new entry in the 'movies' table to reflect this.
 
 INSERT INTO movies (title, year, show_time) VALUES ('Guardians of the Galaxy 2',2016,'00:00');
+
 
 9 The cinema would also like to make the Guardian movies a back to back feature. Update the 'Guardians of the Galaxy' show time from 12:10 to 21:30
 Extension
 
 UPDATE movies SET show_time = '21:30' WHERE show_time = '12:10';
 
+
 Ex 1 Research how to delete multiple entries from your table in a single command.
 
-delete from api_member
-where CAST(id as integer) between 0 and 10;
+delete from api_member where CAST(id as integer) between 0 and 10;
+
+delete from people where name like 'A%';
+-- ^^^^ this deletes everything starting with the letter A
 
 http://stackoverflow.com/questions/25001151/how-to-delete-multiple-rows-in-a-postgresql-database-based-on-string-id
