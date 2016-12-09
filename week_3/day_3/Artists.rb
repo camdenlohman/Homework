@@ -49,6 +49,14 @@ def self.delete_all()
   db.close()
 end
 
+def self.find(search_id)
+sql = "
+SELECT artist FROM artists WHERE id = #{search_id};
+"
+result = SqlRunner.run(sql)[0]
+return Artists.new(result)
+end
+
 def delete()
   db = PG.connect({ dbname: 'Music_Collection', host: 'localhost'})
   sql = 

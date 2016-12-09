@@ -2,6 +2,10 @@ require('pg')
 require_relative('Artists')
 require_relative('./db/sql_runner')
 
+#VVVVVVVVVVV
+#all this should have been 'Album'
+#^^^^^^^^^^^
+
 class Music_Collection
 
   attr_accessor :album_title,:artist_id
@@ -46,12 +50,19 @@ def self.all()
   return all.map{|all| Music_Collection.new(all)}
 end
 
+#V1
 def self.delete_all()
   db = PG.connect({ dbname: 'Music_Collection', host: 'localhost'})
   sql = "DELETE FROM Music_Collection;"
   db.exec(sql)
   db.close()
 end
+
+# #V2
+# def self.delete_all()
+#   sql = "DELETE FROM Music_Collection;"
+#   SqlRunner.run(sql)
+# end
 
 def delete()
   db = PG.connect({ dbname: 'Music_Collection', host: 'localhost'})
@@ -61,18 +72,18 @@ def delete()
   "
   db.exec(sql)
   db.close()
-  end
+end
 
-  def update()
-    db = PG.connect({ dbname: 'Music_Collection', host: 'localhost'})
-    sql = 
-    "
-    UPDATE Music_Collection
-    SET (album_title,artist) =
-    ('#{@album_title}', '#{@artist}')
-    WHERE id = #{@id};
-    "
-    db.exec(sql)
-    db.close()
-  end
+def update()
+  db = PG.connect({ dbname: 'Music_Collection', host: 'localhost'})
+  sql = 
+  "
+  UPDATE Music_Collection
+  SET (album_title,artist) =
+  ('#{@album_title}', '#{@artist}')
+  WHERE id = #{@id};
+  "
+  db.exec(sql)
+  db.close()
+end
 end
