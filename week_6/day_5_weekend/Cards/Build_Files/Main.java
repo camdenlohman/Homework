@@ -7,7 +7,7 @@ public class Main{
   static Random rand = new Random();
 
 
-  static Game game = new Game("BlackJack");
+  static Game game = new Game("Solitare");
   static ArrayList<Card> deck = game.getDeck();
   static ArrayList<Player> player_list;
 
