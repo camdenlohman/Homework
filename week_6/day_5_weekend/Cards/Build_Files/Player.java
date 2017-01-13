@@ -5,6 +5,7 @@ public class Player{
   private String name;
   private ArrayList<Card> hand;
   private int total;
+  boolean stop = false;
 
   public Player(String name){
     this.name = name;
@@ -41,6 +42,14 @@ public class Player{
 
   public int getTotal(){
     return this.total;
+  }
+
+  public void setStop(boolean input){
+    stop = input;
+  }
+
+  public boolean getStop(){
+    return this.stop;
   }
 
 }

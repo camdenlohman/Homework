@@ -7,7 +7,7 @@ public class Main{
   static Random rand = new Random();
 
 
-  static Game game = new Game("Simple BlackJack");
+  static Game game = new Game("BlackJack");
   static ArrayList<Card> deck = game.getDeck();
   static ArrayList<Player> player_list;
 
@@ -23,14 +23,23 @@ public class Main{
     return radnum;
   }
 
-  // static public boolean NewRandP(Player player){
+  static public boolean NewRandP(Player player){
     
-  //   boolean hit = false;
+    boolean hit = false;
 
-  //   radnum = rand.nextInt(player);
+    radnum = rand.nextInt(21);
     
-  //   return radnum;
-  // }
+    if(radnum > player.getTotal()){
+      hit = true;
+    } else {
+      player.setStop(true);
+    }
+
+    System.out.println(radnum);
+    System.out.println(player.getTotal());
+
+    return hit;
+  }
 
   static public void CardTransfer_DToH(Player current_player){
 
@@ -54,8 +63,6 @@ public class Main{
      //System.out.println(deck.get(i).standardGetInfo()); 
     }
 
-    // START of Tests
-
     String answer3;
     String winner_message = "test";
 
@@ -70,8 +77,6 @@ public class Main{
     System.out.println(answer3);
     System.out.println(NewRand());
     System.out.println("");
-
-    // END of Tests
 
     if(game.name == "Solitare"){
 
@@ -143,9 +148,6 @@ public class Main{
       int p1_total = 0;
       int p2_total = 0;
 
-      boolean p1_stop = false;
-      boolean p2_stop = false;
-
       for (int i = 0; i < p1.getHand().size() ; i++ ) {
         p1_total += p1.getHand().get(i).standardGetNumber();
       }
@@ -154,12 +156,35 @@ public class Main{
         p2_total += p2.getHand().get(i).standardGetNumber();
       }
 
-      if(p1_stop == false){
+      while(p1.getStop() == false){
 
-        System.out.println(p1.getName() + "make your choice.");
+        p1.setTotal(p1_total);
+
+        System.out.println(p1.getName() + " make your choice.");
         System.out.println("Hit or Stay?");
 
+         boolean hit = NewRandP(p1);
 
+         if (hit == true){
+          CardTransfer_DToH(p1);
+          p1_total += p1.getHand().get(p1.getHand().size() - 1).standardGetNumber();
+        }
+
+      }
+
+      while(p2.getStop() == false){
+
+        p2.setTotal(p2_total);
+
+        System.out.println(p2.getName() + " make your choice.");
+        System.out.println("Hit or Stay?");
+
+         boolean hit = NewRandP(p2);
+
+         if (hit == true){
+          CardTransfer_DToH(p2);
+          p2_total += p2.getHand().get(p2.getHand().size() - 1).standardGetNumber();
+        }
 
       }
 
